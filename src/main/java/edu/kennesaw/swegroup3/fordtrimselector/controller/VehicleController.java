@@ -19,16 +19,12 @@ public class VehicleController {
 
     @GetMapping
     public ResponseEntity<List<Vehicle>> getAllVehicles(){
-        return new ResponseEntity<List<Vehicle>>(vehicleService.allVehicles(), HttpStatus.OK);
+        return new ResponseEntity<>(vehicleService.allVehicles(), HttpStatus.OK);
     }
 
     @GetMapping("/{model}/{year}")
     public ResponseEntity<Vehicle> getSingleVehicle(@PathVariable String model, @PathVariable String year){
         Optional<Vehicle> vehicle = vehicleService.singleVehicle(model, year);
-        if (vehicle.isPresent()) {
-            return new ResponseEntity<>(vehicle.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return vehicle.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
