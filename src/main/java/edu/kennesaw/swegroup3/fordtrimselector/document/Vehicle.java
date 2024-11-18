@@ -21,17 +21,19 @@ public class Vehicle {
 
     private String model;
     private String year;
+
     private List<Trim> trims;
+    private List<String> images;
 
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    public class Trim{
+    public static class Trim {
         @Id
         private ObjectId id;
         private String name;
-        private int starting_msrp;
-        private String drive_type;
+        private Integer starting_msrp;
+
         private Engine engine;
         private Battery battery;
         private Drivetrain drivetrain;
@@ -45,71 +47,75 @@ public class Vehicle {
         @Data
         @AllArgsConstructor
         @NoArgsConstructor
-        public class Engine{
+        public static class Engine {
             private String type;
             private String engine_model;
-            private int horsepower;
-            private int torque;
+            private Integer horsepower;
+            private Integer torque;
             private String fuel_type;
-            private double fuel_capacity;
+            private Double fuel_capacity;
         }
+
         @Data
         @AllArgsConstructor
         @NoArgsConstructor
-        public class Drivetrain{
+        public static class Drivetrain {
             private String transmission;
             private String drive_type;
         }
+
         @Data
         @AllArgsConstructor
         @NoArgsConstructor
-        public class Battery{
+        public static class Battery {
             private String port_type;
-            private int capacity;
-            private int range;
-            private double charge_time;
-            private int kwh_per_100_miles;
-        }
-        @Data
-        @AllArgsConstructor
-        @NoArgsConstructor
-        public class FuelEfficiency{
-            private int city;
-            private int highway;
-            private int combined;
-        }
-        @Data
-        @AllArgsConstructor
-        @NoArgsConstructor
-        public class MPGe{
-            private int city;
-            private int highway;
-            private int combined;
-        }
-        @Data
-        @AllArgsConstructor
-        @NoArgsConstructor
-        public class Body {
-            private String body_type;
-            private int doors;
-            private int seats;
-            private double length;
-            private double width;
-            private double height;
-            private double wheelbase;
-            private int towing_capacity;
-            private int cargo_capacity_max;
-            private int cargo_capacity_seats_in_place;
-            private int curb_weight;
-        }
-        @Data
-        @AllArgsConstructor
-        @NoArgsConstructor
-        public class PickupBed{
-            private double length;
-            private int payload_capacity;
+            private Integer capacity;
+            private Integer range;
+            private Double charge_time;
+            private Integer kwh_per_100_miles;
         }
 
+        @Data
+        @AllArgsConstructor
+        @NoArgsConstructor
+        public static class FuelEfficiency {
+            private Integer city;
+            private Integer highway;
+            private Integer combined;
+        }
+
+        @Data
+        @AllArgsConstructor
+        @NoArgsConstructor
+        public static class MPGe {
+            private Integer city;
+            private Integer highway;
+            private Integer combined;
+        }
+
+        @Data
+        @AllArgsConstructor
+        @NoArgsConstructor
+        public static class Body {
+            private String body_type;
+            private Integer doors;
+            private Integer seats;
+            private Double length;
+            private Double width;
+            private Double height;
+            private Double wheelbase;
+            private Integer towing_capacity;
+            private Integer cargo_capacity_max;
+            private Integer cargo_capacity_seats_in_place;
+            private Integer curb_weight;
+        }
+
+        @Data
+        @AllArgsConstructor
+        @NoArgsConstructor
+        public static class PickupBed {
+            private Double length;
+            private Integer payload_capacity;
+        }
     }
 }
-

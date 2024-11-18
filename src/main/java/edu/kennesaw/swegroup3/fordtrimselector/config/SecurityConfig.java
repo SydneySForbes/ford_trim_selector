@@ -14,6 +14,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests( auth -> {
             auth.requestMatchers("/").permitAll();
+            auth.requestMatchers("/api/v1/vehicles/**").permitAll();
             auth.anyRequest()
                     .authenticated();
                 }).oauth2Login(withDefaults()).formLogin(withDefaults());
