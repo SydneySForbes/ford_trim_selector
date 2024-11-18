@@ -1,4 +1,4 @@
-package edu.kennesaw.swegroup3.fordtrimselector;
+package edu.kennesaw.swegroup3.fordtrimselector.document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,10 +18,14 @@ public class Vehicle {
 
     @Id
     private ObjectId id;
+
     private String model;
     private String year;
     private List<Trim> trims;
 
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
     public class Trim{
         @Id
         private ObjectId id;
