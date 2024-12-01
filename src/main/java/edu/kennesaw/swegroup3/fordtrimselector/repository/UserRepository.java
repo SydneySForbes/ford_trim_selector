@@ -4,8 +4,6 @@ import edu.kennesaw.swegroup3.fordtrimselector.document.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 }
