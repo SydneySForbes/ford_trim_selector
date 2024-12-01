@@ -12,12 +12,15 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests( auth -> {
-            auth.requestMatchers("/").permitAll();
-            auth.requestMatchers("/api/v1/vehicles/**").permitAll();
-            auth.anyRequest()
-                    .authenticated();
-                }).oauth2Login(withDefaults()).formLogin(withDefaults());
+        http.cors(withDefaults()) // Enable CORS
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("/").permitAll();
+                    auth.requestMatchers("/api/v1/vehicles/**").permitAll();
+                    auth.requestMatchers("/api/v1/users/**").permitAll();
+                    auth.anyRequest().authenticated();
+                })
+                .oauth2Login(withDefaults())
+                .formLogin(withDefaults());
         return http.build();
     }
 }

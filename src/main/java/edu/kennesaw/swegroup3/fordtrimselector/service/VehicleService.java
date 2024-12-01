@@ -29,4 +29,15 @@ public class VehicleService {
         }
         return vehicle;
     }
+
+    public Optional<Vehicle> singleVehicleById(String id) {
+        logger.info("Querying for vehicle with id: " + id);
+        Optional<Vehicle> vehicle = vehicleRepository.findById(id);
+        if (vehicle.isPresent()) {
+            logger.info("Vehicle found: " + vehicle.get());
+        } else {
+            logger.warning("Vehicle not found for id: " + id);
+        }
+        return vehicle;
+    }
 }

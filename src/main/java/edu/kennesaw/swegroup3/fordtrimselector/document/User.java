@@ -14,11 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 public class User {
     @Id
-    private ObjectId id;
-    private String auth_id;
+    private String id;
     private String email;
-    private String username;
-    private String provider;
-
-    //TODO: Add Favorites attribute once the class is created
+    private String[] favorites;
 }
