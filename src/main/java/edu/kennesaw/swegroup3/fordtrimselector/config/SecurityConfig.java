@@ -19,6 +19,15 @@ public class SecurityConfig {
             auth.anyRequest()
                     .authenticated();
                 }).oauth2Login(withDefaults()).formLogin(withDefaults());
+        http.cors(withDefaults()) // Enable CORS
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("/").permitAll();
+                    auth.requestMatchers("/api/v1/vehicles/**").permitAll();
+                    auth.requestMatchers("/api/v1/users/**").permitAll();
+                    auth.anyRequest().authenticated();
+                })
+                .oauth2Login(withDefaults())
+                .formLogin(withDefaults());
         return http.build();
     }
 }

@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/v1/vehicles")
 public class VehicleController {
     @Autowired
@@ -25,6 +24,12 @@ public class VehicleController {
     @GetMapping("/{model}/{year}")
     public ResponseEntity<Vehicle> getSingleVehicle(@PathVariable String model, @PathVariable String year){
         Optional<Vehicle> vehicle = vehicleService.singleVehicle(model, year);
+        return vehicle.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Vehicle> getSingleVehicleById(@PathVariable String id) {
+        Optional<Vehicle> vehicle = vehicleService.singleVehicleById(id);
         return vehicle.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
